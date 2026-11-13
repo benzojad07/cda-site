@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>نادي الفنانين المغاربة | Club des Artistes (C.D.A) - الموقع الرسمي</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@400;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cdaRed: '#D92323',
+            cdaRedDark: '#A81717',
+            cdaGreen: '#008C45',
+            cdaGreenDark: '#006832',
+            cdaDark: '#0D0D0D',
+            cdaCharcoal: '#18181B',
+            cdaGold: '#D4AF37'
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    html[lang="ar"] body { font-family: 'Cairo', 'Tajawal', sans-serif; }
+    html[lang="fr"] body { font-family: 'Plus Jakarta Sans', 'Poppins', sans-serif; }
+
+    .moroccan-dark-bg {
+      background-color: #0D0D0D;
+      background-image: radial-gradient(rgba(217, 35, 35, 0.14) 1.2px, transparent 1.2px),
+                        radial-gradient(rgba(0, 140, 69, 0.14) 1.2px, #0D0D0D 1.2px);
+      background-size: 32px 32px;
+      background-position: 0 0, 16px 16px;
+    }
+
+    /* Multi-Page Transitions */
+    .page-view {
+      display: none;
+      animation: pageEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .page-view.active-page { display: block; }
+
+    @keyframes pageEnter {
+      0% { opacity: 0; transform: translateY(22px) scale(0.985); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Logo Floating & Glow */
+    @keyframes floatLogo {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-12px) scale(1.02); }
+    }
+    .animate-float-logo { animation: floatLogo 4.5s ease-in-out infinite; }
+
+    @keyframes cdaGlow {
+      0%, 100% { box-shadow: 0 0 30px rgba(217, 35, 35, 0.45), 0 0 60px rgba(0, 140, 69, 0.25); }
+      50% { box-shadow: 0 0 50px rgba(217, 35, 35, 0.75), 0 0 85px rgba(0, 140, 69, 0.45); }
+    }
+    .cda-glow { animation: cdaGlow 3.5s infinite ease-in-out; }
+
+    /* Rotating Orbit Ring around Logo */
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes spinReverseSlow {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+    .orbit-ring { animation: spinSlow 24s linear infinite; }
+    .orbit-badge { animation: spinReverseSlow 24s linear infinite; }
+
+    /* President Photo Ken Burns & Shine Animation */
+    @keyframes kenBurns {
+      0%, 100% { transform: scale(1) translateY(0); }
+      50% { transform: scale(1.06) translateY(-4px); }
+    }
+    .animate-president-img {
+      animation: kenBurns 8s ease-in-out infinite;
+    }
+
+    .shine-effect {
+      position: relative;
+      overflow: hidden;
+    }
+    .shine-effect::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.25), transparent);
+      transform: skewX(-25deg);
+      animation: shineSweep 5s infinite;
+    }
+    @keyframes shineSweep {
+      0%, 65% { left: -100%; }
+      100% { left: 200%; }
+    }
+
+    /* Card Lift */
+    .hover-lift {
+      transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.35s ease;
+    }
+    .hover-lift:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.16);
+    }
+
+    .nav-link.active-nav {
+      background-color: #D92323;
+      color: #FFFFFF;
+      box-shadow: 0 4px 15px rgba(217, 35, 35, 0.4);
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0D0D0D; }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #D92323, #008C45);
+      border-radius: 999px;
+    }
+    @keyframes moveBackground {
+      0% { background-position: 0 0, 16px 16px; }
+      100% { background-position: 64px 64px, 80px 80px; }
+    }
+    .animated-header-bg {
+      animation: moveBackground 20s linear infinite;
+    }
+  </style>
+</head>
+<body class="bg-[#F8FAFC] text-gray-900 min-h-screen flex flex-col overflow-x-hidden selection:bg-cdaRed selection:text-white">
+
+  <!-- ==================== TOP UTILITY BAR ==================== -->
+  <div class="bg-black text-gray-300 text-xs py-2 border-b border-white/10 hidden sm:block">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <span class="flex items-center gap-1.5"><i class="fa-solid fa-star text-cdaGreen"></i><span data-i18n="top_slogan">الموقع الرسمي لنادي الفنانين المغاربة • C.D.A</span></span>
+        <span class="text-white/20">|</span>
+        <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-cdaRed"></i><span data-i18n="top_location">المملكة المغربية</span></span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://www.facebook.com/share/1DeenM6SwP/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors flex items-center gap-1.5">
+          <i class="fa-brands fa-facebook text-cdaRed"></i>
+          <span data-i18n="top_fb">صفحتنا الرسمية</span>
+        </a>
+        <span class="text-white/20">|</span>
+        <button onclick="navigateTo('join')" class="text-cdaGreen hover:underline font-bold cursor-pointer" data-i18n="top_member_portal">فضاء المنخرطين</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== HEADER NAVBAR ==================== -->
+  <header class="sticky top-0 z-50 bg-cdaDark/95 backdrop-blur-md border-b border-white/10 shadow-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Official Logo Image in Header -->
+        <button onclick="navigateTo('home')" class="flex items-center gap-3 text-start group cursor-pointer focus:outline-none">
+          <div class="w-12 h-12 rounded-full bg-white p-0.5 shadow-md transition-transform duration-300 group-hover:scale-110 flex-shrink-0 overflow-hidden border-2 border-cdaRed">
+            <img src="logo.jpg" alt="C.D.A Logo" class="w-full h-full object-cover rounded-full" />
+          </div>
+          <div>
+            <div class="text-white font-black text-base sm:text-lg leading-tight" data-i18n="brand_title">نادي الفنانين</div>
+            <div class="text-[11px] font-bold tracking-widest text-cdaRed uppercase">CLUB DES ARTISTES • C.D.A</div>
+          </div>
+        </button>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden xl:flex items-center gap-1.5 text-sm font-bold text-gray-200">
+          <button onclick="navigateTo('home')" data-page="home" class="nav-link active-nav px-3.5 py-2 rounded-xl transition-all cursor-pointer" data-i18n="page_home">الرئيسية</button>
+          <button onclick="navigateTo('about')" data-page="about" class="nav-link px-3.5 py-2 rounded-xl hover:bg-white/10 transition-all cursor-pointer" data-i18n="page_about">من نحن</button>
+          <button onclick="navigateTo('departments')" data-page="departments" class="nav-link px-3.5 py-2 rounded-xl hover:bg-white/10 transition-all cursor-pointer" data-i18n="page_depts">التخصصات</button>
+          <button onclick="navigateTo('artists')" data-page="artists" class="nav-link px-3.5 py-2 rounded-xl hover:bg-white/10 transition-all cursor-pointer" data-i18n="page_artists">دليل الفنانين</button>
+          <button onclick="navigateTo('events')" data-page="events" class="nav-link px-3.5 py-2 rounded-xl hover:bg-white/10 transition-all cursor-pointer" data-i18n="page_events">الفعاليات</button>
+          <button onclick="navigateTo('join')" data-page="join" class="nav-link px-3.5 py-2 rounded-xl hover:bg-white/10 transition-all cursor-pointer" data-i18n="page_join">الانخراط والتواصل</button>
+        </nav>
+
+        <!-- Controls -->
+        <div class="flex items-center gap-2.5">
+          <button onclick="toggleLanguage()" class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-extrabold border border-white/15 transition-all cursor-pointer">
+            <i class="fa-solid fa-language text-cdaGreen text-base"></i>
+            <span id="langBtnText">FR</span>
+          </button>
+
+          <button onclick="navigateTo('join')" class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-cdaGreen hover:bg-cdaGreenDark text-white text-xs sm:text-sm font-bold shadow-lg shadow-cdaGreen/25 transition-all cursor-pointer">
+            <i class="fa-solid fa-id-card"></i>
+            <span data-i18n="nav_cta_card">بطاقة الفنان</span>
+          </button>
+
+          <button onclick="toggleMobileDrawer()" class="xl:hidden p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer" aria-label="Menu">
+            <i id="drawerIcon" class="fa-solid fa-bars text-lg"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileDrawer" class="hidden xl:hidden bg-cdaCharcoal border-t border-white/10 px-4 pt-3 pb-6 space-y-1.5 shadow-2xl">
+      <button onclick="navigateTo('home')" data-page="home" class="nav-link active-nav w-full text-start px-4 py-3 rounded-xl font-bold text-sm text-white flex items-center gap-3"><i class="fa-solid fa-house w-5 text-center"></i><span data-i18n="page_home">الرئيسية</span></button>
+      <button onclick="navigateTo('about')" data-page="about" class="nav-link w-full text-start px-4 py-3 rounded-xl font-bold text-sm text-gray-200 hover:bg-white/10 flex items-center gap-3"><i class="fa-solid fa-landmark w-5 text-center"></i><span data-i18n="page_about">من نحن</span></button>
+      <button onclick="navigateTo('departments')" data-page="departments" class="nav-link w-full text-start px-4 py-3 rounded-xl font-bold text-sm text-gray-200 hover:bg-white/10 flex items-center gap-3"><i class="fa-solid fa-masks-theater w-5 text-center"></i><span data-i18n="page_depts">التخصصات الفنية</span></button>
+      <button onclick="navigateTo('artists')" data-page="artists" class="nav-link w-full text-start px-4 py-3 rounded-xl font-bold text-sm text-gray-200 hover:bg-white/10 flex items-center gap-3"><i class="fa-solid fa-users w-5 text-center"></i><span data-i18n="page_artists">دليل الفنانين</span></button>
+      <button onclick="navigateTo('events')" data-page="events" class="nav-link w-full text-start px-4 py-3 rounded-xl font-bold text-sm text-gray-200 hover:bg-white/10 flex items-center gap-3"><i class="fa-solid fa-calendar-days w-5 text-center"></i><span data-i18n="page_events">الأنشطة والمهرجانات</span></button>
+      <button onclick="navigateTo('join')" data-page="join" class="nav-link w-full text-start px-4 py-3 rounded-xl font-bold text-sm text-gray-200 hover:bg-white/10 flex items-center gap-3"><i class="fa-solid fa-file-signature w-5 text-center"></i><span data-i18n="page_join">الانخراط والتواصل</span></button>
+    </div>
+  </header>
+
+  <!-- ==================== BREADCRUMB ==================== -->
+  <div id="breadcrumbBar" class="hidden bg-white border-b border-gray-200/80 py-3">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between text-xs sm:text-sm">
+      <div class="flex items-center gap-2 text-gray-500 font-semibold">
+        <button onclick="navigateTo('home')" class="hover:text-cdaRed transition-colors cursor-pointer flex items-center gap-1">
+          <i class="fa-solid fa-house text-xs"></i>
+          <span data-i18n="page_home">الرئيسية</span>
+        </button>
+        <i class="fa-solid fa-chevron-left rtl:rotate-0 ltr:rotate-180 text-[10px] text-gray-400"></i>
+        <span id="breadcrumbCurrent" class="text-cdaRed font-extrabold"></span>
+      </div>
+      <div class="text-xs text-gray-400 hidden sm:block">C.D.A • Club des Artistes Marocains</div>
+    </div>
+  </div>
+
+  <!-- ==================== MAIN VIEWS CONTAINER ==================== -->
+  <main class="flex-1">
+
+    <!-- =========================================================================
+         PAGE 1: HOME (الرئيسية - اللوغو بالمدار المتحرك + جناح الرئيس + معرض الفنانين)
+    ========================================================================== -->
+    <section id="view-home" class="page-view active-page">
+      
+      <!-- HERO SECTION WITH INTERACTIVE PARTICLE CANVAS & ORBITING LOGO -->
+      <div class="relative bg-cdaDark moroccan-dark-bg text-white py-16 sm:py-24 lg:py-28 overflow-hidden">
+        <canvas id="particleCanvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-75"></canvas>
+        <div class="absolute -top-24 -start-24 w-96 h-96 bg-cdaRed/25 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 -end-24 w-96 h-96 bg-cdaGreen/25 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Text Content -->
+            <div class="lg:col-span-7 text-center lg:text-start space-y-6 order-2 lg:order-1">
+              <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs sm:text-sm font-bold text-gray-200 backdrop-blur-sm">
+                <span class="w-2.5 h-2.5 rounded-full bg-cdaGreen animate-ping"></span>
+                <span data-i18n="home_badge">المنصة الرسمية للفنانين والمبدعين بالمغرب</span>
+              </div>
+
+              <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black leading-tight">
+                <span class="block text-white" data-i18n="home_title_1">نادي الفنانين المغاربة</span>
+                <span class="block mt-2 bg-gradient-to-r from-cdaRed via-white to-cdaGreen bg-clip-text text-transparent text-2xl sm:text-4xl lg:text-5xl">
+                  CLUB DES ARTISTES (C.D.A)
+                </span>
+              </h1>
+
+              <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed" data-i18n="home_desc">
+                فضاء ثقافي وفني يجمع نخبة من المبدعين في الموسيقى، المسرح، الفنون التشكيلية، والأدب، برئاسة الفنان الكبير عبد العالي الغاوي، بهدف صون الهوية الفنية المغربية ودعم المواهب الصاعدة.
+              </p>
+
+              <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                <button onclick="navigateTo('join')" class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-cdaRed hover:bg-cdaRedDark text-white font-extrabold text-sm sm:text-base shadow-xl shadow-cdaRed/35 transition-all hover:-translate-y-1 flex items-center justify-center gap-2.5 cursor-pointer">
+                  <i class="fa-solid fa-user-plus"></i>
+                  <span data-i18n="home_btn_join">طلب الانخراط في النادي</span>
+                </button>
+                <button onclick="navigateTo('artists')" class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-extrabold text-sm sm:text-base transition-all hover:-translate-y-1 flex items-center justify-center gap-2.5 cursor-pointer">
+                  <i class="fa-solid fa-compass text-cdaGreen"></i>
+                  <span data-i18n="home_btn_dir">تصفح دليل الفنانين</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Official Logo with Rotating Orbiting Pillars -->
+            <div class="lg:col-span-5 flex justify-center order-1 lg:order-2">
+              <div class="relative w-72 h-72 sm:w-80 sm:h-80 flex items-center justify-center">
+                
+                <!-- Orbiting Ring -->
+                <div class="absolute inset-0 rounded-full border border-dashed border-white/25 orbit-ring pointer-events-none">
+                  <div class="orbit-badge absolute -top-4 left-1/2 -translate-x-1/2 bg-cdaCharcoal border border-cdaRed/50 px-3 py-1 rounded-full text-[11px] font-extrabold text-white shadow-lg flex items-center gap-1.5 whitespace-nowrap">
+                    <i class="fa-solid fa-music text-cdaRed"></i> <span data-i18n="pill_music">موسيقى</span>
+                  </div>
+                  <div class="orbit-badge absolute -bottom-4 left-1/2 -translate-x-1/2 bg-cdaCharcoal border border-cdaGreen/50 px-3 py-1 rounded-full text-[11px] font-extrabold text-white shadow-lg flex items-center gap-1.5 whitespace-nowrap">
+                    <i class="fa-solid fa-masks-theater text-cdaGreen"></i> <span data-i18n="pill_theatre">مسرح</span>
+                  </div>
+                  <div class="orbit-badge absolute top-1/2 -left-6 -translate-y-1/2 bg-cdaCharcoal border border-amber-400/50 px-3 py-1 rounded-full text-[11px] font-extrabold text-white shadow-lg flex items-center gap-1.5 whitespace-nowrap">
+                    <i class="fa-solid fa-palette text-amber-400"></i> <span data-i18n="pill_art">تشكيل</span>
+                  </div>
+                  <div class="orbit-badge absolute top-1/2 -right-6 -translate-y-1/2 bg-cdaCharcoal border border-white/40 px-3 py-1 rounded-full text-[11px] font-extrabold text-white shadow-lg flex items-center gap-1.5 whitespace-nowrap">
+                    <i class="fa-solid fa-feather-pointed text-gray-200"></i> <span data-i18n="pill_lit">أدب</span>
+                  </div>
+                </div>
+
+                <!-- Main Floating Logo -->
+                <div class="w-56 h-56 sm:w-64 sm:h-64 rounded-full bg-white p-1.5 cda-glow border-4 border-white/30 animate-float-logo overflow-hidden z-10">
+                  <img src="logo.jpg" alt="نادي الفنانين المغاربة C.D.A" class="w-full h-full object-cover rounded-full" />
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 QUICK NAVIGATION CARDS -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 relative z-20 pb-16">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div onclick="navigateTo('about')" class="hover-lift cursor-pointer bg-white rounded-3xl p-6 shadow-lg border border-gray-100 group">
+            <div class="w-12 h-12 rounded-2xl bg-cdaRed/10 text-cdaRed flex items-center justify-center text-xl mb-4 group-hover:bg-cdaRed group-hover:text-white transition-colors"><i class="fa-solid fa-landmark"></i></div>
+            <h3 class="font-extrabold text-lg text-gray-900 mb-1" data-i18n="card_about_t">تعرف على النادي</h3>
+            <p class="text-xs sm:text-sm text-gray-600 mb-3" data-i18n="card_about_d">رسالتنا، رؤيتنا، وكلمة الرئيس عبد العالي الغاوي.</p>
+            <span class="text-xs font-bold text-cdaRed" data-i18n="explore_page">زيارة الصفحة ←</span>
+          </div>
+          <div onclick="navigateTo('departments')" class="hover-lift cursor-pointer bg-white rounded-3xl p-6 shadow-lg border border-gray-100 group">
+            <div class="w-12 h-12 rounded-2xl bg-gray-900/10 text-gray-900 flex items-center justify-center text-xl mb-4 group-hover:bg-gray-900 group-hover:text-white transition-colors"><i class="fa-solid fa-palette"></i></div>
+            <h3 class="font-extrabold text-lg text-gray-900 mb-1" data-i18n="card_depts_t">الأقطاب الفنية الأربعة</h3>
+            <p class="text-xs sm:text-sm text-gray-600 mb-3" data-i18n="card_depts_d">برامج وورشات الموسيقى، المسرح، التشكيل، والأدب.</p>
+            <span class="text-xs font-bold text-gray-900" data-i18n="explore_page">زيارة الصفحة ←</span>
+          </div>
+          <div onclick="navigateTo('artists')" class="hover-lift cursor-pointer bg-white rounded-3xl p-6 shadow-lg border border-gray-100 group">
+            <div class="w-12 h-12 rounded-2xl bg-cdaGreen/10 text-cdaGreen flex items-center justify-center text-xl mb-4 group-hover:bg-cdaGreen group-hover:text-white transition-colors"><i class="fa-solid fa-users"></i></div>
+            <h3 class="font-extrabold text-lg text-gray-900 mb-1" data-i18n="card_artists_t">دليل الفنانين</h3>
+            <p class="text-xs sm:text-sm text-gray-600 mb-3" data-i18n="card_artists_d">قاعدة بيانات تفاعلية للبحث عن الفنانين المنخرطين.</p>
+            <span class="text-xs font-bold text-cdaGreen" data-i18n="explore_page">زيارة الصفحة ←</span>
+          </div>
+          <div onclick="navigateTo('events')" class="hover-lift cursor-pointer bg-white rounded-3xl p-6 shadow-lg border border-gray-100 group">
+            <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-xl mb-4 group-hover:bg-amber-600 group-hover:text-white transition-colors"><i class="fa-solid fa-calendar-check"></i></div>
+            <h3 class="font-extrabold text-lg text-gray-900 mb-1" data-i18n="card_events_t">الأنشطة والمهرجانات</h3>
+            <p class="text-xs sm:text-sm text-gray-600 mb-3" data-i18n="card_events_d">أجندة الملتقيات القادمة وأرشيف المعارض والسهرات.</p>
+            <span class="text-xs font-bold text-amber-700" data-i18n="explore_page">زيارة الصفحة ←</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== PRESIDENT SPOTLIGHT + FEATURED ARTISTS SHOWCASE (ON HOME) ==================== -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div class="bg-cdaDark moroccan-dark-bg rounded-3xl p-6 sm:p-10 lg:p-12 text-white shadow-2xl border border-white/10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <!-- Animated President Card (president-hero.jpg) -->
+          <div class="lg:col-span-5">
+            <div class="rounded-3xl overflow-hidden border-2 border-cdaRed/60 cda-glow bg-cdaCharcoal shadow-2xl flex flex-col">
+              
+              <!-- Image Container (Full view, no text blocking face) -->
+              <div class="relative h-[430px] sm:h-[460px] overflow-hidden shine-effect">
+                <img src="president-hero.jpg" alt="الفنان عبد العالي الغاوي" class="w-full h-full object-cover object-top animate-president-img" />
+                <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-cdaCharcoal to-transparent"></div>
+                <span class="absolute top-4 start-4 px-3.5 py-1.5 rounded-full bg-cdaRed text-white text-[11px] font-extrabold uppercase tracking-wider shadow-lg" data-i18n="pres_badge">رئيس النادي</span>
+              </div>
+
+              <!-- Text & Button Cleanly Below the Photo -->
+              <div class="p-6 pt-3 bg-cdaCharcoal text-center sm:text-start space-y-2.5">
+                <h3 class="text-2xl font-black text-white" data-i18n="pres_name">الفنان عبد العالي الغاوي</h3>
+                <p class="text-xs sm:text-sm text-gray-300 leading-relaxed" data-i18n="pres_sub_home">أيقونة الأغنية المغربية ورائد العمل الجمعوي الفني</p>
+                <div class="pt-2">
+                  <button onclick="navigateTo('about')" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-white/10 hover:bg-cdaGreen text-white text-xs font-bold transition-all cursor-pointer inline-flex items-center justify-center gap-2 border border-white/10">
+                    <i class="fa-solid fa-quote-right text-cdaGreen group-hover:text-white"></i>
+                    <span data-i18n="read_pres_speech">قراءة كلمة الرئيس</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Interactive Featured Artists Slider & Club Stats -->
+          <div class="lg:col-span-7 space-y-8">
+            <div class="space-y-3">
+              <span class="px-3.5 py-1 rounded-full bg-cdaGreen/20 text-cdaGreen border border-cdaGreen/30 text-xs font-extrabold" data-i18n="showcase_tag">نجوم وأعضاء النادي</span>
+              <h2 class="text-2xl sm:text-4xl font-black text-white" data-i18n="showcase_title">إشعاع فني يجمع الرواد والمواهب الصاعدة</h2>
+              <p class="text-sm text-gray-300 leading-relaxed" data-i18n="showcase_desc">
+                يضم نادي الفنانين المغاربة ثلة من الأسماء اللامعة في الساحة الفنية الوطنية عبر مختلف الجهات، يعملون يداً في يد للارتقاء بالذوق العام.
+              </p>
+            </div>
+
+            <!-- Interactive Artist Spotlight Switcher -->
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-bold text-gray-400 uppercase tracking-wider" data-i18n="featured_label">فنان الأسبوع في الواجهة</span>
+                <div class="flex items-center gap-2">
+                  <button onclick="prevFeaturedArtist()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-cdaRed text-white flex items-center justify-center transition-colors cursor-pointer"><i class="fa-solid fa-chevron-right rtl:rotate-0 ltr:rotate-180 text-xs"></i></button>
+                  <button onclick="nextFeaturedArtist()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-cdaRed text-white flex items-center justify-center transition-colors cursor-pointer"><i class="fa-solid fa-chevron-left rtl:rotate-0 ltr:rotate-180 text-xs"></i></button>
+                </div>
+              </div>
+
+              <div id="featuredArtistBox" class="flex items-center gap-4 transition-all duration-300">
+                <div id="faAvatar" class="w-16 h-16 rounded-2xl bg-gradient-to-br from-cdaRed to-cdaGreen flex items-center justify-center text-xl font-black text-white flex-shrink-0 shadow-lg">أ.ر</div>
+                <div class="flex-1">
+                  <div class="flex items-center gap-2">
+                    <h4 id="faName" class="font-extrabold text-lg text-white">أمين الراشدي</h4>
+                    <span id="faBadge" class="px-2 py-0.5 rounded bg-cdaGreen/20 text-cdaGreen text-[10px] font-bold">موسيقى</span>
+                  </div>
+                  <p id="faBio" class="text-xs text-gray-300 mt-1">ملحن وعازف عود، منسق الورشات الموسيقية بجهة الرباط سلا القنيطرة.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stats Row -->
+            <div class="grid grid-cols-3 gap-4 text-center">
+              <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+                <div class="text-2xl sm:text-3xl font-black text-cdaRed">+250</div>
+                <div class="text-[11px] sm:text-xs font-bold text-gray-300 mt-1" data-i18n="stat_1">فنان منخرط</div>
+              </div>
+              <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+                <div class="text-2xl sm:text-3xl font-black text-cdaGreen">4</div>
+                <div class="text-[11px] sm:text-xs font-bold text-gray-300 mt-1" data-i18n="stat_2">أقطاب فنية</div>
+              </div>
+              <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+                <div class="text-2xl sm:text-3xl font-black text-white">12</div>
+                <div class="text-[11px] sm:text-xs font-bold text-gray-300 mt-1" data-i18n="stat_3">جهة بالمغرب</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- =========================================================================
+         PAGE 2: ABOUT (من نحن - كلمة الرئيس بصورته الثانية president-speech.jpg)
+    ========================================================================== -->
+    <section id="view-about" class="page-view py-12 sm:py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+        
+        <div class="bg-cdaDark moroccan-dark-bg text-white rounded-3xl p-8 sm:p-12 relative overflow-hidden">
+          <div class="relative z-10 max-w-3xl space-y-4">
+            <span class="px-3.5 py-1 rounded-full bg-cdaRed text-white text-xs font-bold" data-i18n="about_tag">التعريف بالجمعية</span>
+            <h1 class="text-3xl sm:text-5xl font-black" data-i18n="about_h1">من نحن؟ قصة نادي الفنانين المغاربة</h1>
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed" data-i18n="about_lead">مؤسسة جمعوية ثقافية مستقلة تهدف إلى لم شمل الفنانين المغاربة والدفاع عن قضاياهم الإبداعية.</p>
+          </div>
+        </div>
+
+        <!-- President Speech Section with Animated Frame & Second Photo -->
+        <div class="bg-white rounded-3xl p-8 sm:p-12 shadow-lg border border-gray-100 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-5 text-center">
+            <div class="relative inline-block rounded-3xl overflow-hidden border-4 border-cdaGreen shadow-2xl shine-effect">
+              <img src="president-speech.jpg" alt="الفنان عبد العالي الغاوي" class="w-full max-w-sm mx-auto object-cover h-96 animate-president-img" />
+            </div>
+            <h3 class="font-black text-xl text-gray-900 mt-4" data-i18n="pres_name">الفنان عبد العالي الغاوي</h3>
+            <p class="text-xs font-bold text-cdaGreen uppercase tracking-wider" data-i18n="pres_title">رئيس نادي الفنانين المغاربة</p>
+          </div>
+          <div class="lg:col-span-7 space-y-5">
+            <span class="px-3.5 py-1 rounded-full bg-cdaGreen/10 text-cdaGreen text-xs font-extrabold" data-i18n="pres_speech_badge">كلمة الرئيس</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-gray-900" data-i18n="pres_speech_title">« نبض الإبداع وخدمة الفنان المغربي »</h2>
+            <p class="text-gray-600 leading-relaxed text-sm sm:text-base italic" data-i18n="pres_speech_text">
+              « باسمي وباسم كافة أعضاء المكتب المسير لنادي الفنانين المغاربة، يسرنا أن نرحب بكم في فضاءنا الرقمي الرسمي. إن هدفنا الأساسي هو صيانة الذاكرة الفنية، دعم المواهب الصاعدة، ومد جسور التواصل الراقي بين مختلف أجيال المبدعين تحت راية وطننا الحبيب. »
+            </p>
+          </div>
+        </div>
+	<!-- Club Official Video Showcase (video.mp4) -->
+        <div class="bg-cdaDark moroccan-dark-bg text-white rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-2xl animated-header-bg">
+          <div class="absolute -top-20 -end-20 w-72 h-72 bg-cdaRed/20 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="absolute -bottom-20 -start-20 w-72 h-72 bg-cdaGreen/20 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <!-- Video Description -->
+            <div class="lg:col-span-5 space-y-4 text-center lg:text-start">
+              <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cdaRed/20 text-cdaRed border border-cdaRed/30 text-xs font-extrabold">
+                <i class="fa-solid fa-clapperboard"></i>
+                <span data-i18n="video_badge">فيديو تعريفي</span>
+              </span>
+              <h2 class="text-2xl sm:text-3xl font-black text-white leading-snug" data-i18n="video_title">
+                اكتشف أجواء وروح نادي الفنانين المغاربة
+              </h2>
+              <p class="text-sm text-gray-300 leading-relaxed" data-i18n="video_desc">
+                لقطات حصرية توثق مبادرات النادي، لقاءات المبدعين، ورسالتنا الفنية في خدمة الثقافة المغربية الأصيلة.
+              </p>
+              <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3 text-xs font-bold text-gray-300">
+                <span class="px-3 py-1.5 rounded-xl bg-white/5 border border-white/10"><i class="fa-solid fa-star text-cdaGreen me-1.5"></i><span data-i18n="video_tag1">إبداع متواصل</span></span>
+                <span class="px-3 py-1.5 rounded-xl bg-white/5 border border-white/10"><i class="fa-solid fa-users text-cdaRed me-1.5"></i><span data-i18n="video_tag2">عائلة فنية واحدة</span></span>
+              </div>
+            </div>
+
+            <!-- Cinema Frame Video Player -->
+            <div class="lg:col-span-7">
+              <div class="relative rounded-2xl overflow-hidden border-2 border-white/15 cda-glow bg-black shadow-2xl group">
+                <video controls preload="metadata" poster="president-speech.jpg" class="w-full aspect-video object-cover bg-black">
+                  <source src="video.mp4" type="video/mp4" />
+                  المتصفح ديالك ما كيدعمش تشغيل الفيديو.
+                </video>
+              </div>
+            </div>
+          </div>
+        </div>
+
+       <!-- Mission / Vision / Values (Centered perfectly with the video width) -->
+        <div class="max-w-7xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="hover-lift bg-white p-7 rounded-3xl shadow-sm border border-gray-100 space-y-3">
+              <div class="w-12 h-12 rounded-2xl bg-cdaRed text-white flex items-center justify-center text-xl"><i class="fa-solid fa-bullseye"></i></div>
+              <h3 class="text-xl font-extrabold text-gray-900" data-i18n="box_mission_t">الرسالة</h3>
+              <p class="text-sm text-gray-600 leading-relaxed" data-i18n="box_mission_d">النهوض بالفعل الثقافي والفني وتوفير فضاء احترافي للتبادل والتكوين.</p>
+            </div>
+            <div class="hover-lift bg-white p-7 rounded-3xl shadow-sm border border-gray-100 space-y-3">
+              <div class="w-12 h-12 rounded-2xl bg-cdaGreen text-white flex items-center justify-center text-xl"><i class="fa-solid fa-eye"></i></div>
+              <h3 class="text-xl font-extrabold text-gray-900" data-i18n="box_vision_t">الرؤية</h3>
+              <p class="text-sm text-gray-600 leading-relaxed" data-i18n="box_vision_d">أن يصبح نادي الفنانين المغاربة مرجعاً وطنياً في اكتشاف المواهب.</p>
+            </div>
+            <div class="hover-lift bg-white p-7 rounded-3xl shadow-sm border border-gray-100 space-y-3">
+              <div class="w-12 h-12 rounded-2xl bg-gray-900 text-white flex items-center justify-center text-xl"><i class="fa-solid fa-handshake"></i></div>
+              <h3 class="text-xl font-extrabold text-gray-900" data-i18n="box_values_t">التضامن الفني</h3>
+              <p class="text-sm text-gray-600 leading-relaxed" data-i18n="box_values_d">تكريس ثقافة الاعتراف وتكريم رواد الفن المغربي الأصيل.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         PAGE 3: DEPARTMENTS (التخصصات الفنية)
+    ========================================================================== -->
+    <section id="view-departments" class="page-view py-12 sm:py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+          <span class="px-3.5 py-1 rounded-full bg-cdaGreen/10 text-cdaGreen text-xs font-extrabold" data-i18n="dept_tag">الأقسام الفنية للنادي</span>
+          <h1 class="text-3xl sm:text-5xl font-black text-gray-900" data-i18n="dept_h1">الأقطاب الإبداعية الأربعة</h1>
+          <p class="text-gray-600 text-sm sm:text-base" data-i18n="dept_lead">ينظم النادي أنشطته عبر أربعة أقسام متخصصة تعكس غنى وتنوع الثقافة المغربية.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div class="hover-lift bg-white rounded-3xl p-7 sm:p-8 shadow-sm border-t-4 border-cdaRed space-y-4">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-2xl bg-cdaRed/10 text-cdaRed flex items-center justify-center text-2xl"><i class="fa-solid fa-music"></i></div>
+              <div>
+                <h2 class="text-2xl font-black text-gray-900" data-i18n="d_music_t">قطب الموسيقى والغناء</h2>
+                <span class="text-xs font-bold text-cdaRed">Pôle Musique & Chant</span>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600 leading-relaxed" data-i18n="d_music_d">تثمين التراث الموسيقي المغربي الأصيل بمختلف روافده ودعم الأصوات والمواهب الشبابية.</p>
+          </div>
+
+          <div class="hover-lift bg-white rounded-3xl p-7 sm:p-8 shadow-sm border-t-4 border-gray-900 space-y-4">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-2xl bg-gray-900/10 text-gray-900 flex items-center justify-center text-2xl"><i class="fa-solid fa-masks-theater"></i></div>
+              <div>
+                <h2 class="text-2xl font-black text-gray-900" data-i18n="d_theatre_t">قطب المسرح والتشخيص</h2>
+                <span class="text-xs font-bold text-gray-600">Pôle Théâtre & Cinéma</span>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600 leading-relaxed" data-i18n="d_theatre_d">تنظيم عروض مسرحية وورشات تكوينية في فنون الأداء والارتجال والسينما.</p>
+          </div>
+
+          <div class="hover-lift bg-white rounded-3xl p-7 sm:p-8 shadow-sm border-t-4 border-cdaGreen space-y-4">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-2xl bg-cdaGreen/10 text-cdaGreen flex items-center justify-center text-2xl"><i class="fa-solid fa-paintbrush"></i></div>
+              <div>
+                <h2 class="text-2xl font-black text-gray-900" data-i18n="d_fine_t">قطب الفنون التشكيلية</h2>
+                <span class="text-xs font-bold text-cdaGreen">Pôle Arts Plastiques</span>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600 leading-relaxed" data-i18n="d_fine_d">معارض اللوحات التشكيلية الرقمية والافتراضية، ودعم الفنانين التشكيليين.</p>
+          </div>
+
+          <div class="hover-lift bg-white rounded-3xl p-7 sm:p-8 shadow-sm border-t-4 border-amber-500 space-y-4">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-2xl"><i class="fa-solid fa-feather-pointed"></i></div>
+              <div>
+                <h2 class="text-2xl font-black text-gray-900" data-i18n="d_lit_t">قطب الأدب والشعر</h2>
+                <span class="text-xs font-bold text-amber-600">Pôle Littérature & Poésie</span>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600 leading-relaxed" data-i18n="d_lit_d">الأمسيات الشعرية، توقيع الإصدارات الأدبية الجديدة، وتشجيع كتابة النص الفني.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         PAGE 4: ARTISTS DIRECTORY (دليل الفنانين)
+    ========================================================================== -->
+    <section id="view-artists" class="page-view py-12 sm:py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-3">
+          <span class="px-3.5 py-1 rounded-full bg-cdaRed/10 text-cdaRed text-xs font-extrabold" data-i18n="art_tag">دليل الأعضاء</span>
+          <h1 class="text-3xl sm:text-5xl font-black text-gray-900" data-i18n="art_h1">دليل الفنانين المنخرطين</h1>
+          <p class="text-gray-600 text-sm" data-i18n="art_lead">ابحث عن الفنانين والمبدعين المنتمين لمختلف أقطاب النادي.</p>
+        </div>
+
+        <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-200 flex flex-col sm:flex-row gap-3 items-center justify-between">
+          <div class="relative w-full sm:w-96">
+            <i class="fa-solid fa-search absolute start-4 top-3.5 text-gray-400"></i>
+            <input type="text" id="artistSearch" oninput="filterArtists()" placeholder="ابحث بالاسم أو التخصص..." class="w-full ps-11 pe-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-cdaRed text-sm" />
+          </div>
+          <div class="flex items-center gap-2 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0">
+            <button onclick="filterDept('all')" class="px-4 py-2 rounded-xl bg-cdaDark text-white text-xs font-bold whitespace-nowrap cursor-pointer">الكل</button>
+            <button onclick="filterDept('music')" class="px-4 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-bold whitespace-nowrap cursor-pointer">موسيقى</button>
+            <button onclick="filterDept('theatre')" class="px-4 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-bold whitespace-nowrap cursor-pointer">مسرح</button>
+            <button onclick="filterDept('art')" class="px-4 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-bold whitespace-nowrap cursor-pointer">تشكيل</button>
+          </div>
+        </div>
+
+        <div id="artistsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="artist-card hover-lift bg-white p-6 rounded-3xl border border-gray-100 shadow-sm flex items-center gap-4" data-dept="music" data-name="أمين الراشدي">
+            <div class="w-16 h-16 rounded-2xl bg-cdaRed/10 text-cdaRed flex items-center justify-center text-xl font-bold flex-shrink-0">أ.ر</div>
+            <div>
+              <h3 class="font-extrabold text-gray-900 text-lg">أمين الراشدي</h3>
+              <p class="text-xs font-bold text-cdaRed mt-0.5">موسيقي وملحن</p>
+              <span class="inline-block mt-2 px-2.5 py-0.5 rounded-md bg-gray-100 text-[10px] text-gray-600 font-bold">الرباط</span>
+            </div>
+          </div>
+          <div class="artist-card hover-lift bg-white p-6 rounded-3xl border border-gray-100 shadow-sm flex items-center gap-4" data-dept="theatre" data-name="سناء العلوي">
+            <div class="w-16 h-16 rounded-2xl bg-gray-900/10 text-gray-900 flex items-center justify-center text-xl font-bold flex-shrink-0">س.ع</div>
+            <div>
+              <h3 class="font-extrabold text-gray-900 text-lg">سناء العلوي</h3>
+              <p class="text-xs font-bold text-gray-900 mt-0.5">ممثلة مسرحية وسينمائية</p>
+              <span class="inline-block mt-2 px-2.5 py-0.5 rounded-md bg-gray-100 text-[10px] text-gray-600 font-bold">الدار البيضاء</span>
+            </div>
+          </div>
+          <div class="artist-card hover-lift bg-white p-6 rounded-3xl border border-gray-100 shadow-sm flex items-center gap-4" data-dept="art" data-name="مهدي بناني">
+            <div class="w-16 h-16 rounded-2xl bg-cdaGreen/10 text-cdaGreen flex items-center justify-center text-xl font-bold flex-shrink-0">م.ب</div>
+            <div>
+              <h3 class="font-extrabold text-gray-900 text-lg">مهدي بناني</h3>
+              <p class="text-xs font-bold text-cdaGreen mt-0.5">فنان تشكيلي</p>
+              <span class="inline-block mt-2 px-2.5 py-0.5 rounded-md bg-gray-100 text-[10px] text-gray-600 font-bold">مراكش</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         PAGE 5: EVENTS (الفعاليات)
+    ========================================================================== -->
+    <section id="view-events" class="page-view py-12 sm:py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div class="text-center max-w-2xl mx-auto space-y-3">
+          <span class="px-3.5 py-1 rounded-full bg-amber-500/10 text-amber-600 text-xs font-extrabold">أجندة الثقافة</span>
+          <h1 class="text-3xl sm:text-5xl font-black text-gray-900">الفعاليات والمهرجانات القادمة</h1>
+          <p class="text-gray-600 text-sm">تابع أحدث الملتقيات، الحفلات، والورشات التكوينية المنظمة من طرف النادي.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div class="hover-lift bg-white rounded-3xl p-7 sm:p-8 shadow-sm border border-gray-100 space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-cdaRed/10 text-cdaRed text-xs font-extrabold">مهرجان وطني</span>
+              <span class="text-xs text-gray-400 font-bold"><i class="fa-solid fa-calendar me-1"></i> 15 - 18 ماي 2026</span>
+            </div>
+            <h3 class="text-2xl font-black text-gray-900">مهرجان الفنون المغربية - الدورة السنوية</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">سهرة كبرى وعروض موسيقية ومسرحية تجمع نخبة الفنانين المغاربة تحت إشراف رئيس النادي.</p>
+            <button onclick="alert('تم حجز تذكرة الحضور المبدئية بنجاح!')" class="px-5 py-2.5 rounded-xl bg-cdaDark hover:bg-cdaRed text-white text-xs font-bold transition-colors cursor-pointer">حجز المقعد أونلاين</button>
+          </div>
+
+          <div class="hover-lift bg-white rounded-3xl p-7 sm:p-8 shadow-sm border border-gray-100 space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-cdaGreen/10 text-cdaGreen text-xs font-extrabold">ماستر كลาส</span>
+              <span class="text-xs text-gray-400 font-bold"><i class="fa-solid fa-calendar me-1"></i> 25 ماي 2026</span>
+            </div>
+            <h3 class="text-2xl font-black text-gray-900">ورشة تكوينية في التشخيص المسرحي</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">تأطير أساتذة مختصين لفائدة المواهب الشابة المنخرطة في النادي.</p>
+            <button onclick="alert('تم تسجيل طلب المشاركة في الورشة!')" class="px-5 py-2.5 rounded-xl bg-cdaDark hover:bg-cdaGreen text-white text-xs font-bold transition-colors cursor-pointer">تسجيل في الورشة</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         PAGE 6: JOIN & CONTACT (الانخراط والتواصل مع البطاقة الرقمية)
+    ========================================================================== -->
+    <section id="view-join" class="page-view py-12 sm:py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div class="text-center max-w-2xl mx-auto space-y-3">
+          <span class="px-3.5 py-1 rounded-full bg-cdaGreen/10 text-cdaGreen text-xs font-extrabold" data-i18n="join_tag">فضاء الانخراط</span>
+          <h1 class="text-3xl sm:text-5xl font-black text-gray-900" data-i18n="join_h1">انضم إلى نادي الفنانين المغاربة</h1>
+          <p class="text-gray-600 text-sm" data-i18n="join_lead">املأ الاستمارة أدناه واحصل فوراً على معاينة بطاقة انخراطك الرقمية برمز QR.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <div class="lg:col-span-6 bg-white p-8 rounded-3xl shadow-sm border border-gray-100 space-y-6">
+            <h3 class="text-xl font-black text-gray-900 flex items-center gap-2">
+              <i class="fa-solid fa-id-card text-cdaRed"></i>
+              <span data-i18n="form_title">استمارة طلب العضوية</span>
+            </h3>
+
+            <form onsubmit="handleJoinSubmit(event)" class="space-y-4">
+              <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="form_name">الاسم الكامل للفنان</label>
+                <input type="text" id="inputName" required placeholder="مثال: يوسف العلوي" oninput="updateDigitalCard()" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-cdaRed text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="form_dept">التخصص الفني</label>
+                <select id="inputDept" onchange="updateDigitalCard()" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-cdaRed text-sm bg-white">
+                  <option value="قطب الموسيقى والغناء">🎵 قطب الموسيقى والغناء</option>
+                  <option value="قطب المسرح والتشخيص">🎭 قطب المسرح والتشخيص</option>
+                  <option value="قطب الفنون التشكيلية">🎨 قطب الفنون التشكيلية</option>
+                  <option value="قطب الأدب والشعر">✍️ قطب الأدب والشعر</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1" data-i18n="form_city">المدينة / الجهة</label>
+                <input type="text" id="inputCity" required placeholder="مثال: الرباط" oninput="updateDigitalCard()" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-cdaRed text-sm" />
+              </div>
+              <button type="submit" class="w-full py-3.5 rounded-xl bg-cdaRed hover:bg-cdaRedDark text-white font-extrabold text-sm shadow-lg shadow-cdaRed/30 transition-all cursor-pointer" data-i18n="form_btn">
+                تأكيد وإصدار البطاقة الرقمية
+              </button>
+            </form>
+          </div>
+
+          <div class="lg:col-span-6 space-y-6">
+            <div class="bg-gradient-to-br from-cdaDark via-cdaCharcoal to-black p-8 rounded-3xl text-white shadow-2xl border border-white/20 relative overflow-hidden shine-effect">
+              <div class="absolute -top-10 -end-10 w-40 h-40 bg-cdaRed/30 rounded-full blur-2xl"></div>
+              
+              <div class="relative z-10 space-y-6">
+                <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                  <div class="flex items-center gap-2.5">
+                    <img src="logo.jpg" alt="CDA" class="w-10 h-10 rounded-full object-cover border border-cdaRed" />
+                    <div>
+                      <h4 class="font-extrabold text-sm" data-i18n="card_brand">نادي الفنانين المغاربة</h4>
+                      <p class="text-[10px] text-gray-400">Club des Artistes Marocains</p>
+                    </div>
+                  </div>
+                  <span class="px-2.5 py-1 rounded-md bg-cdaGreen/20 text-cdaGreen text-[10px] font-extrabold border border-cdaGreen/30" data-i18n="card_status">منخرط معتمد</span>
+                </div>
+
+                <div class="space-y-2 py-2">
+                  <div class="text-[11px] text-gray-400 uppercase tracking-widest" data-i18n="card_holder">اسم الفنان المنخرط</div>
+                  <div id="cardNamePreview" class="text-xl sm:text-2xl font-black text-white">يوسف العلوي</div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 pt-2 border-t border-white/10">
+                  <div>
+                    <div class="text-[10px] text-gray-400 uppercase" data-i18n="card_dept_l">التخصص</div>
+                    <div id="cardDeptPreview" class="text-xs sm:text-sm font-bold text-cdaRed mt-0.5">قطب الموسيقى والغناء</div>
+                  </div>
+                  <div>
+                    <div class="text-[10px] text-gray-400 uppercase" data-i18n="card_city_l">المدينة</div>
+                    <div id="cardCityPreview" class="text-xs sm:text-sm font-bold text-gray-200 mt-0.5">الرباط</div>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between pt-4 border-t border-white/10 text-xs text-gray-400">
+                  <span>ID: #CDA-2026-998</span>
+                  <span class="text-cdaGreen font-extrabold"><i class="fa-solid fa-qrcode text-lg"></i></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm flex items-center justify-between">
+              <div>
+                <h4 class="font-extrabold text-gray-900 text-sm">مقر النادي الرسمي</h4>
+                <p class="text-xs text-gray-500 mt-0.5">شارع محمد الخامس، الرباط، المغرب</p>
+              </div>
+              <a href="https://www.facebook.com/share/1DeenM6SwP/" target="_blank" class="px-4 py-2.5 rounded-xl bg-cdaRed/10 text-cdaRed text-xs font-bold hover:bg-cdaRed hover:text-white transition-colors">
+                <i class="fa-brands fa-facebook me-1"></i> صفحتنا
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-cdaDark text-white border-t border-white/10 py-12 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center md:text-start">
+      <div class="flex items-center justify-center md:justify-start gap-3">
+        <img src="logo.jpg" alt="C.D.A" class="w-12 h-12 rounded-full object-cover border-2 border-cdaRed" />
+        <div>
+          <div class="font-black text-lg text-white">نادي الفنانين المغاربة</div>
+          <div class="text-xs text-cdaRed font-bold mt-0.5">CLUB DES ARTISTES • C.D.A</div>
+          <p class="text-xs text-gray-400 mt-1">برئاسة الفنان الكبير عبد العالي الغاوي</p>
+        </div>
+      </div>
+      <div class="flex justify-center gap-6 text-xl">
+        <a href="https://www.facebook.com/share/1DeenM6SwP/" target="_blank" class="text-gray-400 hover:text-cdaRed transition-colors"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" class="text-gray-400 hover:text-cdaGreen transition-colors"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="text-gray-400 hover:text-red-500 transition-colors"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+      <div class="text-xs text-gray-400 md:text-end">
+        &copy; 2026 Club Des Artistes Marocains (C.D.A). All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT LOGIC & PARTICLE ENGINE ==================== -->
+  <script>
+    let currentLang = 'ar';
+
+    // Featured Artists Carousel Data
+    const featuredArtists = [
+      { initials: 'أ.ر', name: 'أمين الراشدي', badge: 'موسيقى', bio: 'ملحن وعازف عود، منسق الورشات الموسيقية بجهة الرباط سلا القنيطرة.' },
+      { initials: 'س.ع', name: 'سناء العلوي', badge: 'مسرح', bio: 'ممثلة ومخرجة مسرحية، مشرفة على مختبر التكوين الدرامي للشباب.' },
+      { initials: 'م.ب', name: 'مهدي بناني', badge: 'تشكيل', bio: 'فنان تشكيلي وخطاط، مشارك في المعارض الدولية للفن المعاصر.' }
+    ];
+    let currentArtistIdx = 0;
+
+    function renderFeaturedArtist() {
+      const a = featuredArtists[currentArtistIdx];
+      const box = document.getElementById('featuredArtistBox');
+      box.style.opacity = '0';
+      setTimeout(() => {
+        document.getElementById('faAvatar').textContent = a.initials;
+        document.getElementById('faName').textContent = a.name;
+        document.getElementById('faBadge').textContent = a.badge;
+        document.getElementById('faBio').textContent = a.bio;
+        box.style.opacity = '1';
+      }, 180);
+    }
+
+    function nextFeaturedArtist() {
+      currentArtistIdx = (currentArtistIdx + 1) % featuredArtists.length;
+      renderFeaturedArtist();
+    }
+
+    function prevFeaturedArtist() {
+      currentArtistIdx = (currentArtistIdx - 1 + featuredArtists.length) % featuredArtists.length;
+      renderFeaturedArtist();
+    }
+
+    setInterval(nextFeaturedArtist, 5000);
+
+    // Translations
+    const translations = {
+      ar: {
+        top_slogan: "الموقع الرسمي لنادي الفنانين المغاربة • C.D.A",
+        top_location: "المملكة المغربية",
+        top_fb: "صفحتنا الرسمية",
+        top_member_portal: "فضاء المنخرطين",
+        brand_title: "نادي الفنانين",
+        page_home: "الرئيسية",
+        page_about: "من نحن",
+        page_depts: "التخصصات",
+        page_artists: "دليل الفنانين",
+        page_events: "الفعاليات",
+        page_join: "الانخراط والتواصل",
+        nav_cta_card: "بطاقة الفنان",
+        home_badge: "المنصة الرسمية للفنانين والمبدعين بالمغرب",
+        home_title_1: "نادي الفنانين المغاربة",
+        home_desc: "فضاء ثقافي وفني يجمع نخبة من المبدعين في الموسيقى، المسرح، الفنون التشكيلية، والأدب، برئاسة الفنان الكبير عبد العالي الغاوي، بهدف صون الهوية الفنية المغربية ودعم المواهب الصاعدة.",
+        home_btn_join: "طلب الانخراط في النادي",
+        home_btn_dir: "تصفح دليل الفنانين",
+        pill_music: "موسيقى",
+        pill_theatre: "مسرح",
+        pill_art: "تشكيل",
+        pill_lit: "أدب",
+        card_about_t: "تعرف على النادي",
+        card_about_d: "رسالتنا، رؤيتنا، وكلمة الرئيس عبد العالي الغاوي.",
+        card_depts_t: "الأقطاب الفنية الأربعة",
+        card_depts_d: "برامج وورشات الموسيقى، المسرح، التشكيل، والأدب.",
+        card_artists_t: "دليل الفنانين",
+        card_artists_d: "قاعدة بيانات تفاعلية للبحث عن الفنانين المنخرطين.",
+        card_events_t: "الأنشطة والمهرجانات",
+        card_events_d: "أجندة الملتقيات القادمة وأرشيف المعارض والسهرات.",
+        explore_page: "زيارة الصفحة ←",
+        pres_badge: "رئيس النادي",
+        pres_name: "الفنان عبد العالي الغاوي",
+        pres_sub_home: "أيقونة الأغنية المغربية ورائد العمل الجمعوي الفني",
+        read_pres_speech: "قراءة كلمة الرئيس",
+        showcase_tag: "نجوم وأعضاء النادي",
+        showcase_title: "إشعاع فني يجمع الرواد والمواهب الصاعدة",
+        showcase_desc: "يضم نادي الفنانين المغاربة ثلة من الأسماء اللامعة في الساحة الفنية الوطنية عبر مختلف الجهات، يعملون يداً في يد للارتقاء بالذوق العام.",
+        featured_label: "فنان الأسبوع في الواجهة",
+        stat_1: "فنان منخرط",
+        stat_2: "أقطاب فنية",
+        stat_3: "جهة بالمغرب",
+        about_tag: "التعريف بالجمعية",
+        about_h1: "من نحن؟ قصة نادي الفنانين المغاربة",
+        about_lead: "مؤسسة جمعوية ثقافية مستقلة تهدف إلى لم شمل الفنانين المغاربة والدفاع عن قضاياهم الإبداعية.",
+        pres_speech_badge: "كلمة الرئيس",
+        pres_speech_title: "« نبض الإبداع وخدمة الفنان المغربي »",
+        pres_speech_text: "« باسمي وباسم كافة أعضاء المكتب المسير لنادي الفنانين المغاربة، يسرنا أن نرحب بكم في فضاءنا الرقمي الرسمي. إن هدفنا الأساسي هو صيانة الذاكرة الفنية، دعم المواهب الصاعدة، ومد جسور التواصل الراقي بين مختلف أجيال المبدعين تحت راية وطننا الحبيب. »",
+        pres_title: "رئيس نادي الفنانين المغاربة",
+        box_mission_t: "الرسالة",
+        box_mission_d: "النهوض بالفعل الثقافي والفني وتوفير فضاء احترافي للتبادل والتكوين.",
+        box_vision_t: "الرؤية",
+        box_vision_d: "أن يصبح نادي الفنانين المغاربة مرجعاً وطنياً في اكتشاف المواهب.",
+        box_values_t: "التضامن الفني",
+        box_values_d: "تكريس ثقافة الاعتراف وتكريم رواد الفن المغربي الأصيل.",
+        dept_tag: "الأقسام الفنية للنادي",
+        dept_h1: "الأقطاب الإبداعية الأربعة",
+        dept_lead: "ينظم النادي أنشطته عبر أربعة أقسام متخصصة تعكس غنى وتنوع الثقافة المغربية.",
+        d_music_t: "قطب الموسيقى والغناء",
+        d_music_d: "تثمين التراث الموسيقي المغربي الأصيل بمختلف روافده ودعم الأصوات والمواهب الشبابية.",
+        d_theatre_t: "قطب المسرح والتشخيص",
+        d_theatre_d: "تنظيم عروض مسرحية وورشات تكوينية في فنون الأداء والارتجال والسينما.",
+        d_fine_t: "قطب الفنون التشكيلية",
+        d_fine_d: "معارض اللوحات التشكيلية الرقمية والافتراضية، ودعم الفنانين التشكيليين.",
+        d_lit_t: "قطب الأدب والشعر",
+        d_lit_d: "الأمسيات الشعرية، توقيع الإصدارات الأدبية الجديدة، وتشجيع كتابة النص الفني.",
+        art_tag: "دليل الأعضاء",
+        art_h1: "دليل الفنانين المنخرطين",
+        art_lead: "ابحث عن الفنانين والمبدعين المنتمين لمختلف أقطاب النادي.",
+        join_tag: "فضاء الانخراط",
+        join_h1: "انضم إلى نادي الفنانين المغاربة",
+        join_lead: "املأ الاستمارة أدناه واحصل فوراً على معاينة بطاقة انخراطك الرقمية برمز QR.",
+        form_title: "استمارة طلب العضوية",
+        form_name: "الاسم الكامل للفنان",
+        form_dept: "التخصص الفني",
+        form_city: "المدينة / الجهة",
+        form_btn: "تأكيد وإصدار البطاقة الرقمية",
+        card_brand: "نادي الفنانين المغاربة",
+        card_status: "منخرط معتمد",
+        card_holder: "اسم الفنان المنخرط",
+        card_dept_l: "التخصص",
+        card_city_l: "المدينة"
+      },
+      fr: {
+        top_slogan: "Site officiel du Club des Artistes Marocains • C.D.A",
+        top_location: "Royaume du Maroc",
+        top_fb: "Notre Page Officielle",
+        top_member_portal: "Espace Membres",
+        brand_title: "Club des Artistes",
+        page_home: "Accueil",
+        page_about: "À Propos",
+        page_depts: "Départements",
+        page_artists: "Annuaire",
+        page_events: "Événements",
+        page_join: "Adhésion & Contact",
+        nav_cta_card: "Carte Artiste",
+        home_badge: "La plateforme officielle des artistes et créateurs au Maroc",
+        home_title_1: "Club des Artistes Marocains",
+        home_desc: "Un espace culturel et artistique réunissant l'élite des créateurs sous la présidence de l'artiste Abdelali El Ghaoui, pour préserver l'identité artistique marocaine.",
+        home_btn_join: "Demander l'adhésion",
+        home_btn_dir: "Parcourir l'annuaire",
+        pill_music: "Musique",
+        pill_theatre: "Théâtre",
+        pill_art: "Arts",
+        pill_lit: "Littérature",
+        card_about_t: "À propos du Club",
+        card_about_d: "Notre mission, vision et le mot du président Abdelali El Ghaoui.",
+        card_depts_t: "Les 4 Pôles Artistiques",
+        card_depts_d: "Programmes de musique, théâtre, arts plastiques et littérature.",
+        card_artists_t: "Annuaire des Artistes",
+        card_artists_d: "Base de données interactive pour rechercher les membres.",
+        card_events_t: "Activités & Festivals",
+        card_events_d: "Agenda des prochains rendez-vous et archives des expositions.",
+        explore_page: "Visiter la page →",
+        pres_badge: "Président du Club",
+        pres_name: "L'artiste Abdelali El Ghaoui",
+        pres_sub_home: "Icône de la chanson marocaine et pionnier de l'action associative",
+        read_pres_speech: "Lire le mot du Président",
+        showcase_tag: "Étoiles & Membres",
+        showcase_title: "Un rayonnement unissant pionniers et jeunes talents",
+        showcase_desc: "Le Club des Artistes Marocains rassemble des figures emblématiques à travers toutes les régions du Royaume.",
+        featured_label: "Artiste à la une",
+        stat_1: "Artistes membres",
+        stat_2: "Pôles créatifs",
+        stat_3: "Régions du Maroc",
+        about_tag: "Présentation",
+        about_h1: "À Propos du Club des Artistes Marocains",
+        about_lead: "Une association culturelle indépendante visant à rassembler les artistes marocains et défendre leurs causes.",
+        pres_speech_badge: "Mot du Président",
+        pres_speech_title: "« Le pouls de la création et du service aux artistes »",
+        pres_speech_text: "« Au nom de tous les membres du bureau, nous sommes ravis de vous accueillir sur notre espace numérique. Notre objectif principal est de préserver la mémoire artistique et soutenir les nouveaux talents sous la bannière de notre cher pays. »",
+        pres_title: "Président du Club des Artistes Marocains",
+        box_mission_t: "Mission",
+        box_mission_d: "Promouvoir l'action culturelle et offrir un cadre professionnel d'échange.",
+        box_vision_t: "Vision",
+        box_vision_d: "Devenir la référence nationale en matière de découverte de talents.",
+        box_values_t: "Solidarité Artistique",
+        box_values_d: "Consacrer la culture de la reconnaissance envers les pionniers de l'art.",
+        dept_tag: "Nos Départements",
+        dept_h1: "Les 4 Pôles Artistiques",
+        dept_lead: "Le club organise ses activités à travers 4 pôles spécialisés reflétant la richesse culturelle.",
+        d_music_t: "Pôle Musique & Chant",
+        d_music_d: "Valoriser le patrimoine musical marocain et soutenir les jeunes voix.",
+        d_theatre_t: "Pôle Théâtre & Cinéma",
+        d_theatre_d: "Organiser des pièces de théâtre et des ateliers de formation aux arts dramatiques.",
+        d_fine_t: "Pôle Arts Plastiques",
+        d_fine_d: "Expositions de peintures numériques et virtuelles, soutien aux plasticiens.",
+        d_lit_t: "Pôle Littérature & Poésie",
+        d_lit_d: "Soirées poétiques, dédicaces de livres et encourager l'écriture artistique.",
+        art_tag: "Annuaire",
+        art_h1: "Artistes Membres",
+        art_lead: "Recherchez les artistes et créateurs affiliés aux différents pôles du club.",
+        join_tag: "Espace Adhésion",
+        join_h1: "Rejoignez le Club des Artistes",
+        join_lead: "Remplissez le formulaire et obtenez instantanément votre carte de membre numérique QR.",
+        form_title: "Formulaire d'adhésion",
+        form_name: "Nom complet de l'artiste",
+        form_dept: "Spécialité artistique",
+        form_city: "Ville / Région",
+        form_btn: "Conférer et générer la carte numérique",
+        card_brand: "Club des Artistes Marocains",
+        card_status: "Membre agréé",
+        card_holder: "Titulaire de la carte",
+        card_dept_l: "Spécialité",
+        card_city_l: "Ville"
+      }
+    };
+
+    function navigateTo(pageId) {
+      document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
+      const target = document.getElementById('view-' + pageId);
+      if (target) target.classList.add('active-page');
+
+      document.querySelectorAll('.nav-link').forEach(btn => btn.classList.remove('active-nav'));
+      document.querySelectorAll(`[data-page="${pageId}"]`).forEach(btn => btn.classList.add('active-nav'));
+
+      const breadcrumb = document.getElementById('breadcrumbBar');
+      const breadcrumbCurrent = document.getElementById('breadcrumbCurrent');
+      if (pageId === 'home') {
+        breadcrumb.classList.add('hidden');
+      } else {
+        breadcrumb.classList.remove('hidden');
+        const pageNames = {
+          about: currentLang === 'ar' ? 'من نحن' : 'À Propos',
+          departments: currentLang === 'ar' ? 'التخصصات' : 'Départements',
+          artists: currentLang === 'ar' ? 'دليل الفنانين' : 'Annuaire',
+          events: currentLang === 'ar' ? 'الفعاليات' : 'Événements',
+          join: currentLang === 'ar' ? 'الانخراط والتواصل' : 'Adhésion'
+        };
+        breadcrumbCurrent.textContent = pageNames[pageId] || pageId;
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const mobileDrawer = document.getElementById('mobileDrawer');
+      if (!mobileDrawer.classList.contains('hidden')) mobileDrawer.classList.add('hidden');
+    }
+
+    function toggleMobileDrawer() {
+      document.getElementById('mobileDrawer').classList.toggle('hidden');
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'ar' ? 'fr' : 'ar';
+      const root = document.documentElement;
+      root.setAttribute('lang', currentLang);
+      root.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+      document.getElementById('langBtnText').textContent = currentLang === 'ar' ? 'FR' : 'AR';
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[currentLang][key]) el.textContent = translations[currentLang][key];
+      });
+    }
+
+    function updateDigitalCard() {
+      const name = document.getElementById('inputName').value.trim();
+      const dept = document.getElementById('inputDept').value;
+      const city = document.getElementById('inputCity').value.trim();
+
+      document.getElementById('cardNamePreview').textContent = name || (currentLang === 'ar' ? 'يوسف العلوي' : 'Youssef Alami');
+      document.getElementById('cardDeptPreview').textContent = dept;
+      document.getElementById('cardCityPreview').textContent = city || (currentLang === 'ar' ? 'الرباط' : 'Rabat');
+    }
+
+    function handleJoinSubmit(e) {
+      e.preventDefault();
+      alert(currentLang === 'ar' ? 'تم استلام طلب انخراطك وبطاقتك الرقمية جاهزة!' : 'Demande reçue avec succès ! Votre carte numérique est prête.');
+    }
+
+    function filterArtists() {
+      const q = document.getElementById('artistSearch').value.toLowerCase();
+      document.querySelectorAll('.artist-card').forEach(card => {
+        const name = card.getAttribute('data-name').toLowerCase();
+        card.style.display = name.includes(q) ? 'flex' : 'none';
+      });
+    }
+
+    function filterDept(dept) {
+      document.querySelectorAll('.artist-card').forEach(card => {
+        card.style.display = (dept === 'all' || card.getAttribute('data-dept') === dept) ? 'flex' : 'none';
+      });
+    }
+
+    // Interactive Particle Canvas Engine
+    const canvas = document.getElementById('particleCanvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      function resizeCanvas() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+      }
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      const colors = ['#D92323', '#008C45', '#FFFFFF'];
+      for (let i = 0; i < 45; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 2.5 + 1,
+          dx: (Math.random() - 0.5) * 0.7,
+          dy: (Math.random() - 0.5) * 0.7,
+          color: colors[Math.floor(Math.random() * colors.length)]
+        });
+      }
+
+      function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((p, idx) => {
+          p.x += p.dx;
+          p.y += p.dy;
+          if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.fill();
+
+          for (let j = idx + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+            if (dist < 110) {
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(255,255,255,${0.12 * (1 - dist / 110)})`;
+              ctx.lineWidth = 0.6;
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.stroke();
+            }
+          }
+        });
+        requestAnimationFrame(animateParticles);
+      }
+      animateParticles();
+    }
+  </script>
+</body>
+</html>
